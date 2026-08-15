@@ -1,0 +1,10 @@
+<%= form_with model: @task do |f| %>
+  <% if @task.errors.any? %>
+    <p style="color:red"><%= @task.errors.full_messages.join(", ") %></p>
+  <% end %>
+
+  <%= f.label :title, "ชื่องาน" %>
+  <%= f.text_field :title %>
+
+  <%= f.submit "บันทึก" %>
+<% end %>

@@ -1,2 +1,13 @@
-<h1>Tasks#index</h1>
-<p>Find me in app/views/tasks/index.html.erb</p>
+<h1>Todo List</h1>
+
+<%= link_to "เพิ่มงานใหม่", new_task_path %>
+
+<ul>
+  <% @tasks.each do |task| %>
+    <li>
+      <%= link_to task.title, task_path(task) %>
+      <%= link_to "แก้ไข", edit_task_path(task) %>
+      <%= link_to "ลบ", task_path(task), data: { turbo_method: :delete, turbo_confirm: "แน่ใจนะว่าจะลบ?" } %>
+    </li>
+  <% end %>
+</ul>
