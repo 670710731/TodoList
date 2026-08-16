@@ -2,8 +2,10 @@ services:
 web:
   type: web
   name: workshop-todolist
-  runtime: docker
+  runtime: ruby
   plan: free
+  buildCommand: bundle install
+  startCommand: bin/render-start
   healthCheckPath: /up
   disk:
     name: rails-storage
@@ -12,3 +14,7 @@ web:
   envVars:
     - key: RAILS_MASTER_KEY
       sync: false
+    - key: RAILS_ENV
+      value: production
+    - key: RACK_ENV
+      value: production
