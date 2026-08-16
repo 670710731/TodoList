@@ -1,6 +1,5 @@
 services:
-  web:
-    type: web
+  - type: web
     name: workshop-todolist
     runtime: ruby
     plan: free
