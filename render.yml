@@ -1,20 +1,20 @@
 services:
-web:
-  type: web
-  name: workshop-todolist
-  runtime: ruby
-  plan: free
-  buildCommand: bundle install
-  startCommand: bin/render-start
-  healthCheckPath: /up
-  disk:
-    name: rails-storage
-    mountPath: /rails/storage
-    sizeGB: 1
-  envVars:
-    - key: RAILS_MASTER_KEY
-      sync: false
-    - key: RAILS_ENV
-      value: production
-    - key: RACK_ENV
-      value: production
+  web:
+    type: web
+    name: workshop-todolist
+    runtime: ruby
+    plan: free
+    buildCommand: bundle install
+    startCommand: bin/render-start
+    healthCheckPath: /up
+    disk:
+      name: rails-storage
+      mountPath: /rails/storage
+      sizeGB: 1
+    envVars:
+      - key: RAILS_MASTER_KEY
+        sync: false
+      - key: RAILS_ENV
+        value: production
+      - key: RACK_ENV
+        value: production
