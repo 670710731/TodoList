@@ -1,13 +1,14 @@
-<h1>Todo List</h1>
 
-<%= link_to "เพิ่มงานใหม่", new_task_path %>
+<div class="max-w-xl mx-auto mt-10 px-4">
+  <h1 class="text-3xl font-bold text-gray-800 mb-6">Todo List</h1>
 
-<ul>
-  <% @tasks.each do |task| %>
-    <li>
-      <%= link_to task.title, task_path(task) %>
-      <%= link_to "แก้ไข", edit_task_path(task) %>
-      <%= link_to "ลบ", task_path(task), data: { turbo_method: :delete, turbo_confirm: "แน่ใจนะว่าจะลบ?" } %>
-    </li>
-  <% end %>
-</ul>
+  <div id="flash" class="mb-4"></div>
+
+  <%= render "form", task: Task.new %>
+
+  <ul id="tasks" class="space-y-2 mt-6">
+    <% @tasks.each do |task| %>
+      <%= render "task", task: task %>
+    <% end %>
+  </ul>
+</div>

@@ -1,0 +1,9 @@
+<li id="<%= dom_id(task) %>" class="task-card">
+  <%= turbo_frame_tag dom_id(task, :details) do %>
+    <%= link_to task.title, task_path(task), class: "text-gray-800 hover:text-blue-500" %>
+  <% end %>
+  <div class="flex gap-3 text-sm">
+    <%= link_to "แก้ไข", edit_task_path(task), class: "link-action" %>
+    <%= link_to "ลบ", task_path(task), data: { turbo_method: :delete, turbo_confirm: "แน่ใจนะว่าจะลบ?" }, class: "link-danger" %>
+  </div>
+</li>

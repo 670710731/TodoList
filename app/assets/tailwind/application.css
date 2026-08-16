@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+.btn-primary {
+  @apply bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg cursor-pointer;
+}
+
+.btn-secondary {
+  @apply bg-gray-200 hover:bg-gray-600 text-gray-800 px-4 py-2 rounded-lg inline-block;
+}
+
+.link-action {
+  @apply text-blue-500 hover:underline text-sm;
+}
+
+.link-danger {
+  @apply text-red-500 hover:underline text-sm;
+}
+
+.task-card {
+  @apply flex items-center justify-between bg-white border border-gray-200 rounded-lg px-4 py-3 shadow-sm;
+}

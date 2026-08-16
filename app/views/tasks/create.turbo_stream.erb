@@ -1,0 +1,5 @@
+<%= turbo_stream.append "tasks", partial: "task", locals: { task: @task } %>
+<%= turbo_stream.replace "new_task_form", partial: "form", locals: { task: Task.new } %>
+<%= turbo_stream.update "flash" do %>
+  <p style="color: green;">บันทึกเรียบร้อย!</p>
+<% end %>

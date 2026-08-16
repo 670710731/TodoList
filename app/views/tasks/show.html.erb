@@ -1,3 +1,7 @@
-<h1><%= @task.title %></h1>
+<%= turbo_frame_tag dom_id(@task, :details) do %>
+  <h2><%= @task.title %></h2>
+  <p>สร้างเมื่อ: <%= @task.created_at.strftime("%d/%m/%Y %H:%M") %></p>
+<% end %>
+
 <%= link_to "แก้ไข", edit_task_path(@task) %>
 <%= link_to "กลับ", tasks_path %>

@@ -17,13 +17,27 @@ class TasksController < ApplicationController
 
   # POST /tasks
   def create
-    @task = Task.new(task_params)
-    if @task.save
-      redirect_to tasks_path, notice: "เพิ่มงานเรียบร้อยแล้ว"
-    else
-      render :new, status: :unprocessable_entity
+  @task = Task.new(task_params)
+  if @task.save
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to tasks_path, notice: "เพิ่มงานเรียบร้อยแล้ว" }
+    end
+  else
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.replace("new_task_form", partial: "form", locals: { task: @task })
+      end
+      format.html { render :new, status: :unprocessable_entity }
     end
   end
+end
+
+  #<%= turbo_stream.append "task_items" do %>
+  #  <%= render @task %>
+  #<% end %>
+
+  #<%= turbo_stream.update "task_count", 
 
   # GET /tasks/:id/edit
   def edit
